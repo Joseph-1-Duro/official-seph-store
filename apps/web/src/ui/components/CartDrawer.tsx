@@ -67,7 +67,7 @@ export default function CartDrawer() {
           <p className="cart-drawer__empty">Your cart is empty</p>
         </div>
         <footer className="cart-drawer__footer">
-          <Link href="/cart" className="cart-drawer__view-cart">
+          <Link href="/cart" className="cart-drawer__view-cart" onClick={closeCart}>
             View Cart
           </Link>
         </footer>
