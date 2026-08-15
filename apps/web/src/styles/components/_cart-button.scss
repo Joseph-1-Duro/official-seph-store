@@ -1,0 +1,24 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Cart button — anchored to the header grid actions column.
+.cart-btn {
+  position: relative;
+  gap: $space-2;
+  @include flex-center;
+  @include hover-support;
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &__count {
+    position: absolute;
+    top: -$space-1;
+    right: -$space-1;
+    min-width: $space-2;
+    padding: 0 $space-1;
+    font-size: $size-sm;
+    line-height: $line-height-tight;
+  }
+}

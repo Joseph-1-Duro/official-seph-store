@@ -1,0 +1,28 @@
+// Base typography defaults.
+@use "../abstracts/variables" as *;
+
+body {
+  font-family: $font-ubuntu;
+  font-size: $size-base;
+  color: $color-gray-800;
+  background: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-grotesk;
+  font-weight: $font-weight-semibold;
+  color: $color-gray-900;
+}
+
+h1 { font-size: $size-3xl; }
+h2 { font-size: $size-2xl; }
+h3 { font-size: $size-xl; }
+
+p {
+  margin: $space-2 0;
+}

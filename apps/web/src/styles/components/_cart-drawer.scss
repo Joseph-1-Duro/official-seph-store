@@ -1,0 +1,102 @@
+// Cart drawer — full-viewport overlay + right-side panel.
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.cart-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: $z-drawer;
+  visibility: hidden;
+  transition: visibility 0s linear 0.2s;
+
+  &--open {
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba($color-black, 0.4);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    .cart-drawer--open & {
+      opacity: 1;
+    }
+  }
+
+  &__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 3rem);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: $color-white;
+    transform: translateX(100%);
+
+    @include respond-to(md) {
+      width: 500px;
+    }
+    transition: transform 0.2s ease;
+
+    .cart-drawer--open & {
+      transform: translateX(0);
+    }
+  }
+
+  &__close {
+    @include flex-center;
+    position: absolute;
+    top: $space-2;
+    right: $space-2;
+    width: $space-4;
+    height: $space-4;
+    padding: 0;
+    color: $color-gray-900;
+
+    @include hover-support {
+      background: $color-gray-100;
+    }
+
+    @include focus-ring;
+  }
+
+  &__body {
+    flex: 1;
+    padding: $space-4 $space-4 $space-2;
+  }
+
+  &__empty {
+    text-align: center;
+    color: $color-gray-600;
+    font-size: $size-sm;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    border-top: $border-width solid $color-gray-200;
+  }
+
+  &__view-cart {
+    @include flex-center;
+    padding: $space-2 $space-4;
+    border-radius: $radius-sm;
+    background: $color-primary;
+    color: $color-white;
+    font-size: $size-sm;
+    font-weight: $font-weight-medium;
+
+    @include hover-support {
+      background: $color-primary-dark;
+    }
+
+    @include focus-ring;
+  }
+}

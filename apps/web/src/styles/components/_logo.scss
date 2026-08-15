@@ -1,0 +1,10 @@
+// Site logo — brand mark + wordmark linking home.
+// Component: src/ui/components/Logo.tsx
+@use "../abstracts/variables" as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-weight: $font-weight-bold;
+}

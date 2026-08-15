@@ -1,0 +1,25 @@
+// Navbar — site navigation.
+// Component: src/ui/components/Navabr.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.navbar {
+  &__toggle {
+    @include flex-center;
+
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      gap: $space-5;
+    }
+  }
+}
