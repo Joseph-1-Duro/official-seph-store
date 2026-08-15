@@ -54,13 +54,13 @@ $radius-full: 9999px;
 $font-grotesk: var(--font-grotesk), system-ui, "Segoe UI", Roboto, sans-serif;
 $font-ubuntu: var(--font-ubuntu), system-ui, "Segoe UI", Roboto, sans-serif;
 
-$size-15: 15px;
-$size-sm: 14px;
-$size-base: 16px;
-$size-lg: 20px;
-$size-xl: 28px;
-$size-2xl: 36px;
-$size-3xl: 48px;
+$size-15: 0.9375rem;
+$size-sm: 0.875rem;
+$size-base: 1rem;
+$size-lg: 1.25rem;
+$size-xl: 1.75rem;
+$size-2xl: 2.25rem;
+$size-3xl: 3rem;
 
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
@@ -78,7 +78,7 @@ $breakpoints: (
 );
 
 // App shell
-$header-height: 64px;
+$header-height: 88px;
 $container-max-width: 1280px;
 
 // Borders, rings & offsets
@@ -93,3 +93,5 @@ $size-control: 40px;
 // Z-index scale
 $z-header: 50;
 $z-floating: 100;
+$z-overlay: 200;
+$z-drawer: 300;

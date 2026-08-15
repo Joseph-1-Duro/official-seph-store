@@ -21,6 +21,13 @@
   justify-content: center;
 }
 
+/// Flex row with items centered and spaced apart.
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /// Single-line text truncation.
 @mixin truncate {
   overflow: hidden;

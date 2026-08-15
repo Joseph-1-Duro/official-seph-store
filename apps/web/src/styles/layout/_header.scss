@@ -1,6 +1,7 @@
 // Site header — brand + navbar row, sticky on top.
 // Component: src/ui/layouts/Header.tsx
 @use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 .site-header {
   position: sticky;
@@ -8,9 +9,32 @@
   z-index: $z-header;
   background: $color-white;
   border-bottom: $border-width solid $color-gray-200;
+  min-height: $header-height;
+
+  @include flex-between;
+
+  @include respond-to(md) {
+    align-items: center;
+  }
 
   &__wrapper {
-    width: min(100% - 2rem, $container-max-width);
+    width: min(100% - 3rem, $container-max-width);
     margin-inline: auto;
+
+    @include flex-between;
+
+    @include respond-to(md) {
+      align-items: center;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+
+    @include respond-to(md) {
+      gap: $space-5;
+    }
   }
 }

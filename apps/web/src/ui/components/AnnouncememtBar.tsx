@@ -23,7 +23,7 @@ export default function AnnouncememtBar() {
       className="announcement-bar"
     >
       <p className="text">
-        We've launched!
+        ⚡ We&apos;ve launched!
         <Link className="announcement-bar__link" href={"/shop"}>Shop Now <ArrowRight /></Link>
       </p>
 
