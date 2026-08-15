@@ -1,5 +1,8 @@
+"use client"
+
 import { useAnnoucmentBarStore } from "@/store/announcementBar.store";
-import { X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
+import Link from "next/link";
 import { useShallow } from "zustand/shallow";
 
 export default function AnnouncememtBar() {
@@ -11,7 +14,7 @@ export default function AnnouncememtBar() {
     }))
   );
 
-  if (!isMounted || isHydrated) return;
+  if (!isMounted || !isHydrated) return;
 
   return (
     <div
@@ -19,7 +22,10 @@ export default function AnnouncememtBar() {
       aria-live="polite"
       className="announcement-bar"
     >
-      <p className="text"></p>
+      <p className="text">
+        We've launched!
+        <Link href={"/shop"}>Shop Now <ArrowRight /></Link>
+      </p>
       
       <button
         onClick={dismissBanner}
