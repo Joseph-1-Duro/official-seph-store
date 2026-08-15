@@ -24,12 +24,13 @@ export default function AnnouncememtBar() {
     >
       <p className="text">
         We've launched!
-        <Link href={"/shop"}>Shop Now <ArrowRight /></Link>
+        <Link className="announcement-bar__link" href={"/shop"}>Shop Now <ArrowRight /></Link>
       </p>
-      
+
       <button
         onClick={dismissBanner}
         type="button"
+        className="announcement-bar__dismiss"
         aria-label="Dismmis announcement bar"
         title="Dismiss announcment"
       >
