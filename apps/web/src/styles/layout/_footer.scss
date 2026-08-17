@@ -8,7 +8,23 @@
   background: $color-gray-900;
   color: $color-gray-300;
 
-  @include respond-to("md") {
+  @include respond-to(md) {
     padding-inline: $space-6;
+  }
+}
+
+.footer {
+  &__wrapper {
+    width: min(100% - 3rem, $container-max-width);
+    margin-inline: auto;
+  }
+}
+
+.footnote {
+  .brand-name {
+    text-transform: uppercase;
+    font-family: $font-grotesk;
+    font-size: clamp(2.5rem, -0.36rem + 14.29vw, 12.5rem);
+    margin-block-start: 5rem;
   }
 }

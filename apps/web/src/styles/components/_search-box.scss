@@ -1,0 +1,224 @@
+// Search box — expandable input with product result dropdown.
+// Component: src/ui/components/SearchBox.tsx
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.search-box {
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	&__trigger {
+		@include flex-center;
+		flex-shrink: 0;
+		border-radius: $radius-sm;
+		padding: $space-2;
+		color: $color-gray-700;
+
+		@include hover-support {
+			background: $color-gray-100;
+			color: $color-black;
+		}
+
+		@include focus-ring;
+	}
+
+	&__field {
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		width: 0;
+		transition: width 0.3s ease, padding 0.3s ease;
+
+		.search-box.is-open & {
+			width: 140px;
+			padding-right: $space-2;
+
+			@include respond-to(md) {
+				width: 220px;
+			}
+		}
+	}
+
+	&__input {
+		flex: 1;
+		min-width: 0;
+		padding: $space-2 $space-3;
+		border: $border-width solid $color-gray-300;
+		border-radius: $radius-sm;
+		font-size: $size-sm;
+		background: $color-white;
+		color: $color-gray-900;
+
+		&::placeholder {
+			color: $color-gray-400;
+		}
+
+		&:focus {
+			outline: none;
+			border-color: $color-primary;
+			box-shadow: 0 0 0 $focus-ring-width rgba($color-primary, 0.2);
+		}
+	}
+
+	&__clear {
+		@include flex-center;
+		flex-shrink: 0;
+		border-radius: $radius-sm;
+		padding: $space-1;
+		color: $color-gray-500;
+
+		@include hover-support {
+			color: $color-black;
+		}
+
+		@include focus-ring;
+	}
+
+	&__dropdown {
+		position: absolute;
+		top: calc(100% + $space-2);
+		right: 0;
+		width: min(90vw, 320px);
+		max-height: 360px;
+		overflow-y: auto;
+		background: $color-white;
+		border: $border-width solid $color-gray-200;
+		border-radius: $radius-md;
+		box-shadow: 0 4px 16px rgba($color-black, 0.1);
+		z-index: $z-floating;
+		opacity: 0;
+		transform: translateY(-$space-2);
+		pointer-events: none;
+		transition: opacity 0.2s ease, transform 0.2s ease;
+
+		.search-box.is-open & {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		}
+	}
+
+	&__skeleton {
+		display: flex;
+		align-items: center;
+		gap: $space-3;
+		padding: $space-3;
+
+		& + & {
+			border-top: $border-width solid $color-gray-100;
+		}
+	}
+
+	&__skeleton-thumb {
+		width: 40px;
+		height: 40px;
+		border-radius: $radius-sm;
+		background: $color-gray-100;
+		animation: search-box-shimmer 1.5s infinite;
+	}
+
+	&__skeleton-text {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: $space-1;
+	}
+
+	&__skeleton-line {
+		height: 12px;
+		border-radius: $radius-sm;
+		background: $color-gray-100;
+		animation: search-box-shimmer 1.5s infinite;
+
+		&:last-child {
+			width: 60%;
+		}
+	}
+
+	&__result {
+		display: flex;
+		align-items: center;
+		gap: $space-3;
+		padding: $space-3;
+		color: $color-gray-700;
+		transition: background-color 0.1s ease;
+
+		& + & {
+			border-top: $border-width solid $color-gray-100;
+		}
+
+		@include hover-support {
+			background-color: $color-gray-50;
+		}
+
+		&.is-active {
+			background-color: $color-gray-100;
+		}
+
+		@include focus-ring;
+	}
+
+	&__result-img {
+		width: 40px;
+		height: 40px;
+		border-radius: $radius-sm;
+		object-fit: cover;
+		flex-shrink: 0;
+		background: $color-gray-100;
+	}
+
+	&__result-info {
+		flex: 1;
+		min-width: 0;
+	}
+
+	&__result-name {
+		font-size: $size-sm;
+		font-weight: $font-weight-medium;
+		color: $color-gray-900;
+		@include truncate;
+	}
+
+	&__result-price {
+		font-size: $size-sm;
+		color: $color-gray-500;
+	}
+
+	&__empty {
+		padding: $space-6 $space-4;
+		text-align: center;
+		color: $color-gray-500;
+		font-size: $size-sm;
+	}
+
+	&__footer {
+		border-top: $border-width solid $color-gray-100;
+		padding: $space-3;
+		text-align: center;
+
+		a {
+			font-size: $size-sm;
+			font-weight: $font-weight-medium;
+			color: $color-primary;
+			transition: color 0.15s ease;
+
+			@include hover-support {
+				color: $color-primary-dark;
+			}
+
+			@include focus-ring;
+		}
+	}
+}
+
+@keyframes search-box-shimmer {
+	0%,
+	100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+}

@@ -13,6 +13,7 @@ export default function CartDrawer() {
       closeCart: state.closeCart,
     }))
   );
+
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ export default function CartDrawer() {
         >
           <X />
         </button>
+
         <div className="cart-drawer__body">
           <p className="cart-drawer__empty">Your cart is empty</p>
         </div>
