@@ -87,7 +87,7 @@
 
     &:nth-child(5) {
       left: calc(50% - 55px);
-      top: -$space-4;
+      top: calc(-1 * (#{$space-4} + 32px));
     }
 
     @include respond-to(sm) {
@@ -96,7 +96,7 @@
 
       &:nth-child(5) {
         left: calc(50% - 65px);
-        top: -$space-5;
+        top: calc(-1 * (#{$space-5} + 32px));
       }
     }
 
@@ -107,7 +107,7 @@
 
       &:nth-child(5) {
         left: calc(50% - 85px);
-        top: -$space-6;
+        top: calc(-1 * (#{$space-6} + 32px));
       }
     }
 
@@ -117,7 +117,7 @@
 
       &:nth-child(5) {
         left: calc(50% - 120px);
-        top: -$space-7;
+        top: calc(-1 * (#{$space-7} + 32px));
       }
     }
   }
