@@ -4,22 +4,122 @@
 @use "../abstracts/mixins" as *;
 
 .hero {
+  position: relative;
   min-height: calc(100vh - #{$header-height});
   @include flex-center;
 
   &__content {
+    position: relative;
+    z-index: 1;
     max-width: $container-max-width;
     padding: $space-8 $space-5;
     text-align: center;
+
+    @include respond-to(md) {
+      padding-inline: $space-9;
+    }
+
+    @include respond-to(xl) {
+      padding-inline: calc(#{$space-9} + 6rem);
+    }
   }
 
   &__content h1 {
-    font-size: $size-3xl;
+    font-size: clamp(3rem, 2.32rem + 2.73vw, 4.5rem);
     color:  hsl(226, 100%, 29%);
   }
   
   &__content p {
+    max-width: 36ch;
+    margin-inline: auto;
+    font-size: $size-base;
     margin-bottom: 3em;
+  }
+}
+
+// Floating product cards around the hero content. Cards are hidden until the
+// GSAP intro reveals them. Positions: two left, two right, one top-center.
+.floating-images {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  &__card {
+    position: absolute;
+    width: 110px;
+    height: 165px;
+    overflow: hidden;
+    border: 2px solid $color-white;
+    border-radius: $radius-lg;
+    background-color: $color-gray-200;
+    box-shadow:
+      0 $space-2 $space-5 rgba($color-gray-900, 0.16),
+      0 $space-4 $space-6 rgba($color-gray-900, 0.12);
+    opacity: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:nth-child(1) {
+      left: 5%;
+      top: 12%;
+    }
+
+    &:nth-child(2) {
+      right: 5%;
+      top: 8%;
+    }
+
+    &:nth-child(3) {
+      left: 8%;
+      bottom: 12%;
+    }
+
+    &:nth-child(4) {
+      right: 8%;
+      bottom: 10%;
+    }
+
+    &:nth-child(5) {
+      left: calc(50% - 55px);
+      top: -$space-4;
+    }
+
+    @include respond-to(sm) {
+      width: 130px;
+      height: 195px;
+
+      &:nth-child(5) {
+        left: calc(50% - 65px);
+        top: -$space-5;
+      }
+    }
+
+    @include respond-to(md) {
+      width: 170px;
+      height: 255px;
+      border-width: 3px;
+
+      &:nth-child(5) {
+        left: calc(50% - 85px);
+        top: -$space-6;
+      }
+    }
+
+    @include respond-to(xl) {
+      width: 240px;
+      height: 360px;
+
+      &:nth-child(5) {
+        left: calc(50% - 120px);
+        top: -$space-7;
+      }
+    }
   }
 }
 
