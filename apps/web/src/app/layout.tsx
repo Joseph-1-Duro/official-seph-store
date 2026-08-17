@@ -21,7 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AnnouncememtBar />
         <Header />
         <ScrollToTop />
-        <main style={{ minHeight: "200dvh"}}>
+        <main>
           {children}
         </main>
         <Footer />

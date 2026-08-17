@@ -28,13 +28,28 @@
     }
   }
 
+  // Mobile: move the menu toggle to the right edge (navbar after actions).
+  .navbar {
+    order: 3;
+    margin-left: $space-4;
+
+    @include respond-to(md) {
+      order: 0;
+      margin-left: 0;
+    }
+  }
+
   &__actions {
     display: flex;
     align-items: center;
     gap: $space-4;
+    order: 2;
+    margin-left: auto;
 
     @include respond-to(md) {
       gap: $space-5;
+      order: 0;
+      margin-left: 0;
     }
   }
 }
